@@ -7,7 +7,7 @@ This repository contains additional formula for [Homebrew](http://github.com/~mx
 
 Prepare once with:
 
-    brew tap aumuell/homebrew
+    brew tap aumuell/tap
 
 From then on, you can use usual install procedure:
 
