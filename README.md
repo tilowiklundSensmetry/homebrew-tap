@@ -1,6 +1,6 @@
 # aumuell's Tap
 
-This repository contains additional formula for [Homebrew](http://github.com/~mxcl/homebrew).
+This repository contains additional formulae for [Homebrew](http://github.com/~mxcl/homebrew).
 
 
 ## Install a Formula from This Tap
