@@ -10,10 +10,12 @@ class Openinventor < Formula
   depends_on "lesstif"
 
   def install
-    system "make",
-        "IVPREFIX=#{prefix}"
+    # Make ivman find the libraries it needs
+    ENV['DYLD_LIBRARY_PATH'] = "#{buildpath}/lib"
+
     system "make",
         "IVPREFIX=#{prefix}",
+        "BUILDMAN=1",
         "install"
   end
 
