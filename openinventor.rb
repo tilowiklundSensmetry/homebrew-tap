@@ -2,7 +2,7 @@ require 'formula'
 
 class Openinventor < Formula
   homepage 'http://oss.sgi.com/projects/inventor/'
-  url 'git://gitorious.org/inventor/inventor.git'
+  url 'git@github.com:aumuell/open-inventor.git'
   version '2.1.5-10'
   sha1 ''
 
