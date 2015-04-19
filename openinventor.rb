@@ -8,6 +8,8 @@ class Openinventor < Formula
 
   depends_on :x11
   depends_on "lesstif"
+  depends_on "jpeg"
+  depends_on "giflib"
 
   def install
     # Make ivman find the libraries it needs
