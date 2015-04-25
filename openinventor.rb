@@ -2,7 +2,7 @@ require 'formula'
 
 class Openinventor < Formula
   homepage 'http://oss.sgi.com/projects/inventor/'
-  url 'git://github.com/aumuell/open-inventor.git'
+  url 'https://github.com/aumuell/open-inventor.git'
   version '2.1.5-10'
   sha1 ''
 
@@ -21,7 +21,7 @@ class Openinventor < Formula
         "install"
   end
 
-  def test
-    system "ivfix #{prefix}/share/inventor/data/models/moon.iv"
+  test do
+    system "ivfix #{share}/inventor/data/models/moon.iv"
   end
 end
