@@ -4,12 +4,12 @@ class Volpack < Formula
   homepage "http://graphics.stanford.edu/software/volpack/"
   url "http://graphics.stanford.edu/software/volpack/volpack-1.0b3.tar.Z"
   #version "1.0b3"
-  sha1 "2418815a44afde165671f4e9b92b633896c758ae"
+  sha256 "d7cfd5f6819cccf88363d2270377e547a07f35da6a0dac45845ecc1640e410fa"
 
   # "Official" build fixes for OS X
   patch do
      url "http://graphics.stanford.edu/software/volpack/volpack-1.0b3-ijt-mods.patch"
-     sha1 "b00c733ed920ed60706efb276c6571aa0557d2bb"
+     sha256 "4d420ff6fd01abb48bb2f772d9e2f7588a6a71d5a065e0d1c08b0b89efeeed81"
   end
 
   # Makefile.in assumes that current directory is in PATH
