@@ -3,7 +3,7 @@ require 'formula'
 class Covise < Formula
   homepage 'https://www.hlrs.de/covise/'
   desc 'Visualization environment for scientific and engineering data'
-  url 'https://github.com/hlrs-vis/covise.git', :using => :git, :revision => 'f5a1086c8b05352701c0ef3288adeea79248c58c'
+  url 'https://github.com/hlrs-vis/covise.git', :using => :git, :revision => '57f072a3e72005e795af4e0d7191387c3a80ad64'
   version '2016.11'
   head 'https://github.com/hlrs-vis/covise.git'
 
