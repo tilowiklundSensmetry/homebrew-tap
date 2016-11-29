@@ -7,8 +7,8 @@ class Openinventor < Formula
   sha256 ''
 
   depends_on :x11
-  depends_on "lesstif"
-  depends_on "jpeg"
+  depends_on "openmotif"
+  depends_on "jpeg-turbo"
   depends_on "giflib"
 
   def install
