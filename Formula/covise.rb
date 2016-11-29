@@ -32,7 +32,7 @@ class Covise < Formula
   depends_on :fortran => :optional
   depends_on :x11 => :optional
   depends_on "homebrew/x11/openmotif" if build.with? "x11"
-  depends_on "aumuell/tap/openinventor" if build.with? "x11"
+  depends_on "hlrs-vis/tap/openinventor" if build.with? "x11"
   depends_on "qt" if build.with? "qt4"
   depends_on "qt5" if build.without? "qt4"
   depends_on "assimp" => :optional
