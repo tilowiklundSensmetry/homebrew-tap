@@ -1,14 +1,14 @@
-# aumuell's Tap
+# Homebrew Formulae provided by the Visualization Team at HLRS (Supercomputing Center at University of Stuttgart)
 
-This repository contains additional formulae for [Homebrew](http://github.com/~mxcl/homebrew).
+This repository contains additional formulae for [Homebrew](https://github.com/Homebrew).
 
 
 ## Install a Formula from This Tap
 
 Prepare once with:
 
-    brew tap aumuell/tap
+    brew tap hlrs-vis/tap
 
-From then on, you can use usual install procedure:
+From then on, you can use the usual install procedure:
 
-    brew install openscenegraph
+    brew install covise
