@@ -47,7 +47,11 @@ class Covise < Formula
   def install
     ENV["COVISEDIR"] = buildpath
     ENV["COVISEDESTDIR"] = buildpath
-    ENV["ARCHSUFFIX"] = "macosopt"
+    if MacOS.version >= :el_capitan
+        ENV["ARCHSUFFIX"] = "macosopt"
+    else
+        ENV["ARCHSUFFIX"] = "libc++opt"
+    end
 
     cmake_args = std_cmake_args
     cmake_args << "-DCOVISE_USE_CUDA:BOOL=ON" if build.with? "cuda"
