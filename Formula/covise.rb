@@ -3,8 +3,8 @@ require 'formula'
 class Covise < Formula
   homepage 'https://www.hlrs.de/covise/'
   desc 'Visualization environment for scientific and engineering data'
-  url 'https://github.com/hlrs-vis/covise.git', :using => :git, :revision => 'ebc4754a2f7f6492db4cfe8bfed52e1fb86d6540'
-  version '2016.12'
+  url 'https://github.com/hlrs-vis/covise.git', :using => :git, :revision => '4e40ed95f14bbde4fac95a6563f07936cbf05634'
+  version '2017.6'
   head 'https://github.com/hlrs-vis/covise.git'
 
   option "with-gdcm", "Build with GDCM for DICOM reading"
