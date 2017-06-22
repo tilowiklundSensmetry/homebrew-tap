@@ -3,7 +3,7 @@ require 'formula'
 class Covise < Formula
   homepage 'https://www.hlrs.de/covise/'
   desc 'Visualization environment for scientific and engineering data'
-  url 'https://github.com/hlrs-vis/covise.git', :using => :git, :revision => '4e40ed95f14bbde4fac95a6563f07936cbf05634'
+  url 'https://github.com/hlrs-vis/covise.git', :using => :git, :revision => '4d7b0304bd8a62bb1a1d30dbab29f842047b1d7b'
   version '2017.6'
   head 'https://github.com/hlrs-vis/covise.git'
 
@@ -46,6 +46,9 @@ class Covise < Formula
   option "with-gdcm", "Build with GDCM for DICOM reading"
   depends_on "homebrew/science/gdcm" if build.with? "gdcm"
   conflicts_with "gdcm", :because => "including GDCM headers fails without explicit GDCM dependency, specify --with-gdcm" if build.without? "gdcm"
+
+  depends_on "sdl" => :optional
+  conflicts_with "sdl", :because => "including SDL header fails without explicit SDL dependency, specify --with-sdl" if build.without? "sdl"
 
   def install
     ENV["COVISEDIR"] = buildpath
