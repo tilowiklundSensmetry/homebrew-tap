@@ -3,8 +3,8 @@ require 'formula'
 class Covise < Formula
   homepage 'https://www.hlrs.de/covise/'
   desc 'Visualization environment for scientific and engineering data'
-  url 'https://github.com/hlrs-vis/covise.git', :using => :git, :revision => 'd14ef1894e88eeafbab0f2f2c1b56b96914b2ca9'
-  version '2017.6'
+  url 'https://github.com/hlrs-vis/covise.git', :using => :git, :revision => 'dc886d0a5de70d3fd66ec5133ed4d3bf903a3bbd'
+  version '2018.1'
   head 'https://github.com/hlrs-vis/covise.git'
 
   option "with-cuda", "Build with CUDA support"
@@ -35,7 +35,7 @@ class Covise < Formula
   depends_on "snappy" => :optional
   depends_on "Caskroom/cask/cuda" if build.with? "cuda"
 
-  depends_on "openscenegraph" if build.with? "cover"
+  depends_on "open-scene-graph" if build.with? "cover"
 
   depends_on :fortran  => :optional
   #conflicts_with "fortran", :because => "linking with Fortran libraries fails without explicit Fortran dependency, specify --with-fortran" if build.without? "fortran"
