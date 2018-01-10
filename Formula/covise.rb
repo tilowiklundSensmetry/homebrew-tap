@@ -8,7 +8,9 @@ class Covise < Formula
   head 'https://github.com/hlrs-vis/covise.git'
 
   bottle do
-      root_url "https://fs.hlrs.de/projects/covise/support/download/"
+      root_url "https://fs.hlrs.de/projects/covise/support/download/homebrew"
+      cellar :any
+      sha256 "090c7fef908d680ca5908061fb0bd734f5d2204850a11d7d8e8408763cc9168c" => :high_sierra
   end
 
   option "with-cuda", "Build with CUDA support"
