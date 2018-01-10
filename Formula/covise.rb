@@ -7,10 +7,17 @@ class Covise < Formula
   version '2018.1'
   head 'https://github.com/hlrs-vis/covise.git'
 
+  bottle do
+      root_url "https://fs.hlrs.de/projects/covise/support/download/"
+  end
+
   option "with-cuda", "Build with CUDA support"
   option "with-jpeg", "Build against libjpeg instead of libjpeg-turbo"
   option "with-x11", "Build against X11 and Open Motif"
   option "without-cover", "Build without OpenCOVER VR renderer"
+  option "without-assimp", "Build without support for reading 3D models with Assimp"
+  option "without-vtk", "Build without support for VTK data"
+  option "without-hdf5", "Build without support for HDF5 based file formats"
 
   depends_on "cmake" => :build
   depends_on "swig" => :build
@@ -27,11 +34,11 @@ class Covise < Formula
   depends_on "boost"
   depends_on "python3"
   depends_on "qt"
-  depends_on "hdf5" => :optional
+  depends_on "hdf5" unless build.without? "hdf5"
   depends_on :x11 => :optional
-  depends_on "homebrew/x11/openmotif" if build.with? "x11"
+  depends_on "homebrew/openmotif" if build.with? "x11"
   depends_on "hlrs-vis/tap/openinventor" if build.with? "x11"
-  depends_on "assimp" => :optional
+  depends_on "assimp" unless build.without? "assimp"
   depends_on "cgns" => :optional
   depends_on "snappy" => :optional
   depends_on "Caskroom/cask/cuda" if build.with? "cuda"
@@ -41,11 +48,11 @@ class Covise < Formula
   depends_on :fortran  => :optional
   #conflicts_with "fortran", :because => "linking with Fortran libraries fails without explicit Fortran dependency, specify --with-fortran" if build.without? "fortran"
 
-  depends_on "vtk" => :optional
+  depends_on "vtk" unless build.without? "vtk"
   conflicts_with "vtk", :because => "including VTK headers fails without explicit VTK dependency, specify --with-vtk" if build.without? "vtk"
 
   option "with-gdcm", "Build with GDCM for DICOM reading"
-  depends_on "homebrew/science/gdcm" if build.with? "gdcm"
+  depends_on "homebrew/gdcm" if build.with? "gdcm"
   conflicts_with "gdcm", :because => "including GDCM headers fails without explicit GDCM dependency, specify --with-gdcm" if build.without? "gdcm"
 
   depends_on "sdl" => :optional
