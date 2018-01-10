@@ -27,6 +27,7 @@ class Covise < Formula
   depends_on "boost"
   depends_on "python3"
   depends_on "qt"
+  depends_on "hdf5" => :optional
   depends_on :x11 => :optional
   depends_on "homebrew/x11/openmotif" if build.with? "x11"
   depends_on "hlrs-vis/tap/openinventor" if build.with? "x11"
