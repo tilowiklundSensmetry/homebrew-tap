@@ -10,7 +10,8 @@ class Covise < Formula
   bottle do
       root_url "https://fs.hlrs.de/projects/covise/support/download/homebrew"
       cellar :any
-      sha256 "090c7fef908d680ca5908061fb0bd734f5d2204850a11d7d8e8408763cc9168c" => :high_sierra
+      rebuild 1
+      sha256 "5b4ee98399c39573321cbe12778d7e2c011003f53b71902a72a360f9b98376f0" => :high_sierra
   end
 
   option "with-cuda", "Build with CUDA support"
@@ -63,6 +64,7 @@ class Covise < Formula
   def install
     ENV["COVISEDIR"] = buildpath
     ENV["COVISEDESTDIR"] = buildpath
+    ENV["EXTERNLIBS"] = ""
     if MacOS.version >= :el_capitan
         ENV["ARCHSUFFIX"] = "macosopt"
     else
