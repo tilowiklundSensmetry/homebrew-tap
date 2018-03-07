@@ -17,6 +17,7 @@ class Covise < Formula
   option "with-cuda", "Build with CUDA support"
   option "with-jpeg", "Build against libjpeg instead of libjpeg-turbo"
   option "with-x11", "Build against X11 and Open Motif"
+  option "with-fortran", "Build modules requiring Fortran"
   option "without-cover", "Build without OpenCOVER VR renderer"
   option "without-assimp", "Build without support for reading 3D models with Assimp"
   option "without-vtk", "Build without support for VTK data"
@@ -48,7 +49,7 @@ class Covise < Formula
 
   depends_on "open-scene-graph" if build.with? "cover"
 
-  depends_on :fortran  => :optional
+  depends_on :gcc  if build.with? "fortran"
   #conflicts_with "fortran", :because => "linking with Fortran libraries fails without explicit Fortran dependency, specify --with-fortran" if build.without? "fortran"
 
   depends_on "vtk" unless build.without? "vtk"
