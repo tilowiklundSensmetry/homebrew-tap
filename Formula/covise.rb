@@ -3,15 +3,14 @@ require 'formula'
 class Covise < Formula
   homepage 'https://www.hlrs.de/covise/'
   desc 'Visualization environment for scientific and engineering data'
-  url 'https://github.com/hlrs-vis/covise.git', :using => :git, :revision => 'b6b75581ff2a64bec2317977b816a836619e5cda'
-  version '2018.1'
+  url 'https://github.com/hlrs-vis/covise.git', :using => :git, :revision => 'c1816a9be07789d0ebb2354302a806e79704dec1'
+  version '2018.3'
   head 'https://github.com/hlrs-vis/covise.git'
 
   bottle do
       root_url "https://fs.hlrs.de/projects/covise/support/download/homebrew"
       cellar :any
-      rebuild 1
-      sha256 "5b4ee98399c39573321cbe12778d7e2c011003f53b71902a72a360f9b98376f0" => :high_sierra
+      sha256 "bdbabe401a9ef9026d0c88fdb0ee5ed69a99604254e0d5683d6617796171ee44" => :high_sierra
   end
 
   option "with-cuda", "Build with CUDA support"
@@ -48,6 +47,7 @@ class Covise < Formula
   depends_on "Caskroom/cask/cuda" if build.with? "cuda"
 
   depends_on "open-scene-graph" if build.with? "cover"
+  depends_on "hidapi" if build.with? "cover"
 
   depends_on :gcc  if build.with? "fortran"
   #conflicts_with "fortran", :because => "linking with Fortran libraries fails without explicit Fortran dependency, specify --with-fortran" if build.without? "fortran"
