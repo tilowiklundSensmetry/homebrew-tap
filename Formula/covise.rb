@@ -3,14 +3,14 @@ require 'formula'
 class Covise < Formula
   homepage 'https://www.hlrs.de/covise/'
   desc 'Visualization environment for scientific and engineering data'
-  url 'https://github.com/hlrs-vis/covise.git', :using => :git, :revision => 'c1816a9be07789d0ebb2354302a806e79704dec1'
-  version '2018.3'
+  url 'https://github.com/hlrs-vis/covise.git', :using => :git, :revision => 'd3e156d0872c9d3ce464e1622d5b2c6d89797465'
+  version '2018.5'
   head 'https://github.com/hlrs-vis/covise.git'
 
   bottle do
       root_url "https://fs.hlrs.de/projects/covise/support/download/homebrew"
       cellar :any
-      sha256 "bdbabe401a9ef9026d0c88fdb0ee5ed69a99604254e0d5683d6617796171ee44" => :high_sierra
+      sha256 "cffafb521110a1d231259fab962e9451cd9d1caa433ba77e58a358bc5987735e" => :high_sierra
   end
 
   option "with-cuda", "Build with CUDA support"
@@ -48,6 +48,9 @@ class Covise < Formula
 
   depends_on "open-scene-graph" if build.with? "cover"
   depends_on "hidapi" if build.with? "cover"
+  depends_on "eigen" if build.with? "cover"
+  depends_on "hlrs-vis/tap/osgcal" if build.with? "cover"
+  depends_on "hlrs-vis/tap/opencrg" if build.with? "cover" => :build
 
   depends_on :gcc  if build.with? "fortran"
   #conflicts_with "fortran", :because => "linking with Fortran libraries fails without explicit Fortran dependency, specify --with-fortran" if build.without? "fortran"
