@@ -9,6 +9,12 @@ class Cal3d < Formula
   depends_on "automake" => :build
   depends_on "libtool" => :build
 
+  bottle do
+    root_url "https://fs.hlrs.de/projects/covise/support/download/homebrew"
+    cellar :any
+    sha256 "c07116d8b11697c18e7217154beab43810465357714cd26bbbc0ebe907931f9b" => :high_sierra
+  end
+
   def install
     Dir.chdir('cal3d')
     system "autoreconf", "-i"

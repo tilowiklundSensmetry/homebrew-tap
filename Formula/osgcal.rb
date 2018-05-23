@@ -9,6 +9,12 @@ class Osgcal < Formula
   depends_on "open-scene-graph"
   depends_on "cal3d"
 
+  bottle do
+    root_url "https://fs.hlrs.de/projects/covise/support/download/homebrew"
+    cellar :any
+    sha256 "3f70624cb50d857d820308b485f5a9a564fa752211bc3f8fba774d2cc32c29c6" => :high_sierra
+  end
+
   def install
     Dir.chdir('osgCal')
     # ENV.deparallelize  # if your formula fails when building in parallel
