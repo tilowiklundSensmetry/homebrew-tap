@@ -8,8 +8,7 @@ class Opencrg < Formula
 
   def install
     Dir.chdir('c-api/baselib')
-    # ENV.deparallelize  # if your formula fails when building in parallel
-    # Remove unrecognized options if warned by configure
+    ENV.deparallelize # if your formula fails when building in parallel
     system "make", "COMP=clang", "CFLGS=-O2 -g -fPIC -Iinc"
     system "install", "-d", "#{prefix}/include", "#{prefix}/lib"
     system "install", "inc/crgBaseLibPrivate.h", "inc/crgBaseLib.h", "#{prefix}/include"
