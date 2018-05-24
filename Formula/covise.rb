@@ -37,6 +37,7 @@ class Covise < Formula
   depends_on "boost"
   depends_on "python3"
   depends_on "qt"
+  depends_on "teem"
   depends_on "hdf5" unless build.without? "hdf5"
   depends_on :x11 => :optional
   depends_on "homebrew/openmotif" if build.with? "x11"
