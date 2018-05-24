@@ -4,20 +4,20 @@ class Covise < Formula
   homepage 'https://www.hlrs.de/covise/'
   desc 'Visualization environment for scientific and engineering data'
   url 'https://github.com/hlrs-vis/covise.git', :using => :git, :revision => '1685d4971ee61aaae45908fbb9d817268f45323f'
-  version '2018.5.1'
+  version '2018.5.2'
   head 'https://github.com/hlrs-vis/covise.git'
 
   bottle do
       root_url "https://fs.hlrs.de/projects/covise/support/download/homebrew"
       cellar :any
-      sha256 "0dcdb01fdcc4cf28bad92bff696e7a65bc9f379d7e96a3a18636a9f52ce7f032" => :high_sierra
+      sha256 "8f1453338e5dfc335700c9b62c05609f4b1382c3bb5dbf969abfe06883e69b26" => :high_sierra
   end
 
   option "with-cuda", "Build with CUDA support"
   option "with-jpeg", "Build against libjpeg instead of libjpeg-turbo"
   option "with-x11", "Build against X11 and Open Motif"
   option "with-fortran", "Build modules requiring Fortran"
-  option "without-cover", "Build without OpenCOVER VR renderer"
+  option "with-mpi", "Build OpenCOVER with MPI support"
   option "without-assimp", "Build without support for reading 3D models with Assimp"
   option "without-vtk", "Build without support for VTK data"
   option "without-hdf5", "Build without support for HDF5 based file formats"
@@ -37,26 +37,30 @@ class Covise < Formula
   depends_on "boost"
   depends_on "python3"
   depends_on "qt"
-  depends_on "teem"
-  depends_on "hdf5" unless build.without? "hdf5"
+  depends_on "teem" => :recommended
+  depends_on "hdf5" => :recommended
   depends_on :x11 => :optional
   depends_on "homebrew/openmotif" if build.with? "x11"
   depends_on "hlrs-vis/tap/openinventor" if build.with? "x11"
-  depends_on "assimp" unless build.without? "assimp"
+  depends_on "assimp" => :recommended
   depends_on "cgns" => :optional
   depends_on "snappy" => :optional
   depends_on "Caskroom/cask/cuda" if build.with? "cuda"
 
-  depends_on "open-scene-graph" if build.with? "cover"
-  depends_on "hidapi" if build.with? "cover"
-  depends_on "eigen" if build.with? "cover"
-  depends_on "hlrs-vis/tap/osgcal" if build.with? "cover"
-  depends_on "hlrs-vis/tap/opencrg" if build.with? "cover" => :build
+  # OpenCOVER
+  depends_on "open-scene-graph"
+  depends_on "hidapi"
+  depends_on "eigen"
+  depends_on "hlrs-vis/tap/osgcal"
+  depends_on "hlrs-vis/tap/opencrg"
+  #depends_on "mpich" => :optional
+  depends_on "open-mpi" if build.with? "mpi"
+
 
   depends_on :gcc  if build.with? "fortran"
   #conflicts_with "fortran", :because => "linking with Fortran libraries fails without explicit Fortran dependency, specify --with-fortran" if build.without? "fortran"
 
-  depends_on "vtk" unless build.without? "vtk"
+  depends_on "vtk" => :recommended
   conflicts_with "vtk", :because => "including VTK headers fails without explicit VTK dependency, specify --with-vtk" if build.without? "vtk"
 
   option "with-gdcm", "Build with GDCM for DICOM reading"
@@ -84,6 +88,8 @@ class Covise < Formula
     cmake_args << "-DCOVISE_USE_CUDA:BOOL=OFF" if build.without? "cuda"
     cmake_args << "-DCOVISE_USE_X11:BOOL=ON" if build.with? "x11"
     cmake_args << "-DCOVISE_USE_X11:BOOL=OFF" if build.without? "x11"
+    cmake_args << "-DCOVISE_USE_MPI:BOOL=OFF" if build.without? "mpi"
+    cmake_args << "-DCOVISE_USE_MPI:BOOL=ON" if build.with? "mpi"
 
     #cmake_args << "-DCOVISE_USE_VIRVO=OFF"
     #cmake_args << "-DCOVISE_BUILD_MODULES=OFF"
@@ -93,11 +99,9 @@ class Covise < Formula
         system "make install"
     end
 
-    if build.with? "cover"
-        mkdir "build.cover" do
-            system "cmake", "../src/OpenCOVER", *cmake_args
-            system "make install"
-        end
+    mkdir "build.cover" do
+        system "cmake", "../src/OpenCOVER", *cmake_args
+        system "make install"
     end
   end
 
