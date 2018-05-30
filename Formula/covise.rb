@@ -3,14 +3,14 @@ require 'formula'
 class Covise < Formula
   homepage 'https://www.hlrs.de/covise/'
   desc 'Visualization environment for scientific and engineering data'
-  url 'https://github.com/hlrs-vis/covise.git', :using => :git, :revision => '1685d4971ee61aaae45908fbb9d817268f45323f'
-  version '2018.5.2'
+  url 'https://github.com/hlrs-vis/covise.git', :using => :git, :revision => '9106ac092a4f33cf5a7a140bb9e6e08b225743ef'
+  version '2018.5.3'
   head 'https://github.com/hlrs-vis/covise.git'
 
   bottle do
       root_url "https://fs.hlrs.de/projects/covise/support/download/homebrew"
       cellar :any
-      sha256 "8f1453338e5dfc335700c9b62c05609f4b1382c3bb5dbf969abfe06883e69b26" => :high_sierra
+      sha256 "52d25be6d2a884d9b831c0809e8470d354e4487c3f773ff2781adaa7d41cd881" => :high_sierra
   end
 
   option "with-cuda", "Build with CUDA support"
@@ -46,6 +46,8 @@ class Covise < Formula
   depends_on "cgns" => :optional
   depends_on "snappy" => :optional
   depends_on "Caskroom/cask/cuda" if build.with? "cuda"
+  depends_on "proj" => :recommended
+  depends_on "gdal" => :recommended
 
   # OpenCOVER
   depends_on "open-scene-graph"
