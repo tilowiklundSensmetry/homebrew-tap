@@ -12,7 +12,8 @@ class Osgcal < Formula
   bottle do
     root_url "https://fs.hlrs.de/projects/covise/support/download/homebrew"
     cellar :any
-    sha256 "3f70624cb50d857d820308b485f5a9a564fa752211bc3f8fba774d2cc32c29c6" => :high_sierra
+    rebuild 1
+    sha256 "ee23996c96fe44fb518a468406518dd7941a522f4c9d562b265836c38b2af7c7" => :high_sierra
   end
 
   def install
