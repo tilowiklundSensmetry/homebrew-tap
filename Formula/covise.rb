@@ -10,7 +10,8 @@ class Covise < Formula
   bottle do
       root_url "https://fs.hlrs.de/projects/covise/support/download/homebrew"
       cellar :any
-      sha256 "4f417cefa130768bfd01bd221b7b37ac813a74ee287db3237b6d8c6a0b48ebb2" => :high_sierra
+      rebuild 1
+      sha256 "c62c65ef394f724716b1e381bfc8f8439d96cad7b8bf975c666e5acabe0622c3" => :high_sierra
   end
 
   option "with-cuda", "Build with CUDA support"
