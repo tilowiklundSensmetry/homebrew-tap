@@ -3,15 +3,14 @@ require 'formula'
 class Covise < Formula
   homepage 'https://www.hlrs.de/covise/'
   desc 'Visualization environment for scientific and engineering data'
-  url 'https://github.com/hlrs-vis/covise.git', :using => :git, :revision => '5cf9f183f1a6a10fd9ff43827eeeb04b083c4f19'
-  version '2018.5.4'
+  url 'https://github.com/hlrs-vis/covise.git', :using => :git, :revision => 'ad91ba61b8e52dec801e4cc48c7a0d79ee7f34b9'
+  version '2018.9'
   head 'https://github.com/hlrs-vis/covise.git'
 
   bottle do
       root_url "https://fs.hlrs.de/projects/covise/support/download/homebrew"
       cellar :any
-      rebuild 1
-      sha256 "c62c65ef394f724716b1e381bfc8f8439d96cad7b8bf975c666e5acabe0622c3" => :high_sierra
+      sha256 "7a567bfe3fd6d316b71f31a65ca7b11202f395a6c204e8c2ca37118ea4890122" => :high_sierra
   end
 
   option "with-cuda", "Build with CUDA support"
@@ -38,17 +37,19 @@ class Covise < Formula
   depends_on "boost"
   depends_on "python3"
   depends_on "qt"
+  depends_on "gdcm"
   depends_on "teem" => :recommended
   depends_on "hdf5" => :recommended
   depends_on :x11 => :optional
   depends_on "homebrew/openmotif" if build.with? "x11"
   depends_on "hlrs-vis/tap/openinventor" if build.with? "x11"
   depends_on "assimp" => :recommended
-  depends_on "cgns" => :optional
+  #depends_on "cgns" => :optional
   depends_on "snappy" => :optional
   depends_on "Caskroom/cask/cuda" if build.with? "cuda"
   depends_on "proj" => :recommended
   depends_on "gdal" => :recommended
+  depends_on "libarchive"
 
   # OpenCOVER
   depends_on "open-scene-graph"
@@ -66,12 +67,12 @@ class Covise < Formula
   depends_on "vtk" => :recommended
   conflicts_with "vtk", :because => "including VTK headers fails without explicit VTK dependency, specify --with-vtk" if build.without? "vtk"
 
-  option "with-gdcm", "Build with GDCM for DICOM reading"
-  depends_on "homebrew/gdcm" if build.with? "gdcm"
-  conflicts_with "gdcm", :because => "including GDCM headers fails without explicit GDCM dependency, specify --with-gdcm" if build.without? "gdcm"
+  #option "with-gdcm", "Build with GDCM for DICOM reading"
+  #depends_on "homebrew/gdcm" if build.with? "gdcm"
+  #conflicts_with "gdcm", :because => "including GDCM headers fails without explicit GDCM dependency, specify --with-gdcm" if build.without? "gdcm"
 
-  depends_on "sdl" => :optional
-  conflicts_with "sdl", :because => "including SDL header fails without explicit SDL dependency, specify --with-sdl" if build.without? "sdl"
+  depends_on "sdl" # => :optional
+  #conflicts_with "sdl", :because => "including SDL header fails without explicit SDL dependency, specify --with-sdl" if build.without? "sdl"
 
   def install
     ENV["COVISEDIR"] = buildpath
