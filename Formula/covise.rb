@@ -3,14 +3,14 @@ require 'formula'
 class Covise < Formula
   homepage 'https://www.hlrs.de/covise/'
   desc 'Visualization environment for scientific and engineering data'
-  url 'https://github.com/hlrs-vis/covise.git', :using => :git, :revision => 'ad91ba61b8e52dec801e4cc48c7a0d79ee7f34b9'
-  version '2018.9'
+  url 'https://github.com/hlrs-vis/covise.git', :using => :git, :revision => '9e98fd56a9c9204a125d4bbc7de15838ea1c444d'
+  version '2018.9.1'
   head 'https://github.com/hlrs-vis/covise.git'
 
   bottle do
       root_url "https://fs.hlrs.de/projects/covise/support/download/homebrew"
       cellar :any
-      sha256 "7a567bfe3fd6d316b71f31a65ca7b11202f395a6c204e8c2ca37118ea4890122" => :high_sierra
+      sha256 "9016f200bfd1921142f99a98aca7399b600f9d62bce08136f39d8726b2fabc67" => :high_sierra
   end
 
   option "with-cuda", "Build with CUDA support"
