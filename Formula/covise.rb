@@ -3,15 +3,9 @@ require 'formula'
 class Covise < Formula
   homepage 'https://www.hlrs.de/covise/'
   desc 'Visualization environment for scientific and engineering data'
-  url 'https://github.com/hlrs-vis/covise.git', :using => :git, :revision => 'aee9ff7b434f006b6adfc5322e4468c956c4375b'
-  version '2018.9.2'
+  url 'https://github.com/hlrs-vis/covise.git', :using => :git, :revision => '3acdfddba1aab3f44e923041bc3983e63a70f866'
+  version '2019.3'
   head 'https://github.com/hlrs-vis/covise.git'
-
-  bottle do
-      root_url "https://fs.hlrs.de/projects/covise/support/download/homebrew"
-      cellar :any
-      sha256 "46af1ebb1164cc10ec49198ea0ef5c3206bd7b10b4af3e15d7e5d8c0410cc028" => :high_sierra
-  end
 
   option "with-cuda", "Build with CUDA support"
   option "with-jpeg", "Build against libjpeg instead of libjpeg-turbo"
@@ -100,11 +94,6 @@ class Covise < Formula
 
     mkdir "build.covise" do
         system "cmake", "..", *cmake_args
-        system "make install"
-    end
-
-    mkdir "build.cover" do
-        system "cmake", "../src/OpenCOVER", *cmake_args
         system "make install"
     end
   end
