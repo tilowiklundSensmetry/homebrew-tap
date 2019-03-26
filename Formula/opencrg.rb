@@ -6,12 +6,6 @@ class Opencrg < Formula
   sha256 "3ff63ced6190dc22278cd74592e165aca9acf93153c51c93c569744d7714c97b"
   # depends_on "cmake" => :build
 
-  bottle do
-    root_url "https://fs.hlrs.de/projects/covise/support/download/homebrew"
-    cellar :any_skip_relocation
-    sha256 "bdb1095d661709d899497b89699eb8ebc529992f3bdc40711c1193242295400b" => :high_sierra
-  end
-
   def install
     Dir.chdir('c-api/baselib')
     ENV.deparallelize # if your formula fails when building in parallel

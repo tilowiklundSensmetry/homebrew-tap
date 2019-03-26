@@ -2,19 +2,12 @@ class Osgcal < Formula
   desc "Cal3D adapter for OpenSceneGraph, imported from https://sourceforge.net/p/osgcal/code"
   homepage "http://osgcal.sourceforge.net"
   url 'https://github.com/hlrs-vis/osgcal.git', :using => :git, :revision => 'fbefbd54bb4ec822bb192073f93e904b2645a162'
-  version '2018.5'
+  version '2018.5.1'
   head "git://github.com/hlrs-vis/osgcal.git"
 
   depends_on "cmake" => :build
   depends_on "open-scene-graph"
   depends_on "cal3d"
-
-  bottle do
-    root_url "https://fs.hlrs.de/projects/covise/support/download/homebrew"
-    cellar :any
-    rebuild 1
-    sha256 "ee23996c96fe44fb518a468406518dd7941a522f4c9d562b265836c38b2af7c7" => :high_sierra
-  end
 
   def install
     Dir.chdir('osgCal')
