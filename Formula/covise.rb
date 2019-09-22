@@ -3,8 +3,8 @@ require 'formula'
 class Covise < Formula
   homepage 'https://www.hlrs.de/covise/'
   desc 'Visualization environment for scientific and engineering data'
-  url 'https://github.com/hlrs-vis/covise.git', :using => :git, :revision => 'acfc2caf73c8e98ee54436c0b7fe1fd45d2a2d6a'
-  version '2019.3.1'
+  url 'https://github.com/hlrs-vis/covise.git', :using => :git, :revision => 'd00c1e0ac1dd6b22047b240a724a588f59b0b8ed'
+  version '2019.9'
   head 'https://github.com/hlrs-vis/covise.git'
 
   option "with-cuda", "Build with CUDA support"
@@ -15,6 +15,7 @@ class Covise < Formula
   option "without-assimp", "Build without support for reading 3D models with Assimp"
   option "without-vtk", "Build without support for VTK data"
   option "without-hdf5", "Build without support for HDF5 based file formats"
+  option "without-mpi", "Build without support for MPI in OpenCOVER"
 
   depends_on "cmake" => :build
   depends_on "swig" => :build
@@ -53,6 +54,7 @@ class Covise < Formula
   depends_on "hlrs-vis/tap/opencrg"
   #depends_on "mpich" => :optional
   depends_on "open-mpi" if build.with? "mpi"
+  depends_on "mpich" if build.with? "mpich"
 
 
   depends_on :gcc  if build.with? "fortran"
