@@ -3,9 +3,9 @@ require 'formula'
 class Covise < Formula
   homepage 'https://www.hlrs.de/covise/'
   desc 'Visualization environment for scientific and engineering data'
-  url 'https://github.com/hlrs-vis/covise.git', :using => :git, :revision => 'd00c1e0ac1dd6b22047b240a724a588f59b0b8ed'
-  version '2019.9'
-  head 'https://github.com/hlrs-vis/covise.git'
+  url 'https://github.com/hlrs-vis/covise.git', :using => :git, :revision => '576400998d6f6422604d3a77bcef8e274de3cb91'
+  version '2019.9.1'
+  head 'https://github.com/hlrs-vis/covise.git', :using => :git
 
   option "with-cuda", "Build with CUDA support"
   option "with-jpeg", "Build against libjpeg instead of libjpeg-turbo"
