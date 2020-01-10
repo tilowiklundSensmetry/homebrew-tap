@@ -3,8 +3,8 @@ require 'formula'
 class Vistle < Formula
   homepage 'https://vistle.io'
   desc 'Parallel visualization system'
-  url 'https://github.com/vistle/vistle.git', :using => :git, :revision => 'fd96268e0177a973e61ace458396352f6cbb7a17'
-  version '2019.9'
+  url 'https://github.com/vistle/vistle.git', :using => :git, :revision => 'a01155cbcbc32cec50ef1252b33ce931adce403d'
+  version '2020.1'
   head 'https://github.com/vistle/vistle.git', :using => :git
 
   option "without-covise", "Build without support for reading COVISE files and without VR renderer"
