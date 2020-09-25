@@ -1,11 +1,11 @@
 require 'formula'
 
 class Covise < Formula
-  homepage 'https://www.hlrs.de/covise/'
-  desc 'Visualization environment for scientific and engineering data'
-  url 'https://github.com/hlrs-vis/covise.git', :using => :git, :revision => 'bca9233ef05e83085acc8dcf25dfa39fd5863851'
-  version '2020.1'
-  head 'https://github.com/hlrs-vis/covise.git', :using => :git
+  homepage "https://www.hlrs.de/covise/"
+  desc "Visualization environment for scientific and engineering data"
+  url "https://github.com/hlrs-vis/covise.git", :using => :git, :revision => "f7741d6c51558281c7321f76f3f60d3efe051a82"
+  version "2020.9"
+  head "https://github.com/hlrs-vis/covise.git", :using => :git
 
   option "with-cuda", "Build with CUDA support"
   option "with-jpeg", "Build against libjpeg instead of libjpeg-turbo"
@@ -52,6 +52,7 @@ class Covise < Formula
   depends_on "eigen"
   depends_on "hlrs-vis/tap/osgcal"
   depends_on "hlrs-vis/tap/opencrg"
+  depends_on "hlrs-vis/tap/libe57"
   #depends_on "mpich" => :optional
   depends_on "open-mpi" if build.with? "mpi"
   depends_on "mpich" if build.with? "mpich"
@@ -81,7 +82,9 @@ class Covise < Formula
     end
 
     cmake_args = std_cmake_args
+    cmake_args << "-DCOVISE_WARNINGS_IS_ERROR:BOOL=OFF"
     cmake_args << "-DCOVISE_USE_VISIONARAY=OFF"
+    cmake_args << "-DCOVISE_BUILD_DRIVINGSIM=ON"
     cmake_args << "-DCOVISE_USE_FORTRAN:BOOL=ON" if build.with? "fortran"
     cmake_args << "-DCOVISE_USE_FORTRAN:BOOL=OFF" if build.without? "fortran"
     cmake_args << "-DCOVISE_USE_CUDA:BOOL=ON" if build.with? "cuda"
