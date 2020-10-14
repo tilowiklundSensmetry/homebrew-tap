@@ -1,12 +1,12 @@
 class Opencrg < Formula
   desc "Creation and evaluation of road surfaces"
   homepage "http://www.opencrg.org/"
-  url "http://www.opencrg.org/tools/OpenCRG.1.1.2.zip"
+  url "https://www.asam.net/index.php?eID=dumpFile&t=f&f=3797&token=d989315866f73b528757d971b60f4c81bc2526f9"
   version "1.1.2"
-  sha256 "3ff63ced6190dc22278cd74592e165aca9acf93153c51c93c569744d7714c97b"
+  sha256 "598b8d08e5ee35ec972dac35be871a378ac2dde9ac96dbdd063e9cdde9344bda"
 
   def install
-    Dir.chdir("c-api/baselib")
+    Dir.chdir("OpenCRG.#{version}/c-api/baselib")
     ENV.deparallelize
     system "make", "COMP=clang", "CFLGS=-O2 -g -fPIC -Iinc"
     include.install "inc/crgBaseLibPrivate.h", "inc/crgBaseLib.h"
