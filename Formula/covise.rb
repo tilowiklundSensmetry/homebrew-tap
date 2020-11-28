@@ -32,7 +32,7 @@ class Covise < Formula
   depends_on "boost"
   depends_on "python3"
   depends_on "qt"
-  depends_on "gdcm"
+  depends_on "gdcm" => :optional
   depends_on "teem" => :recommended
   depends_on "hdf5" => :recommended
   depends_on :x11 => :optional
