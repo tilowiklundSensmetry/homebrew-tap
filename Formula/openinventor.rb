@@ -10,12 +10,14 @@ class Openinventor < Formula
   depends_on "libxi"
   depends_on "mesa"
   depends_on "mesa-glu"
+  depends_on "mesalib-glw"
   depends_on "jpeg"
 
   def install
     mkdir "brew-build" do
       system "cmake", "..", *std_cmake_args,
         "-DCMAKE_MACOSX_RPATH=FALSE"
+        "-DINVENTOR_INTERNAL_GLW=FALSE"
       system "make", "install"
     end
   end
