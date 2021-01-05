@@ -3,8 +3,8 @@ require 'formula'
 class Covise < Formula
   homepage "https://www.hlrs.de/covise/"
   desc "Visualization environment for scientific and engineering data"
-  url "https://github.com/hlrs-vis/covise.git", :using => :git, :revision => "f7741d6c51558281c7321f76f3f60d3efe051a82"
-  version "2020.9"
+  url "https://github.com/hlrs-vis/covise.git", :using => :git, :revision => "d5bbf766c18037547c608fedd2f0f0881e8323d5"
+  version "2021.1"
   head "https://github.com/hlrs-vis/covise.git", :using => :git
 
   option "with-cuda", "Build with CUDA support"
