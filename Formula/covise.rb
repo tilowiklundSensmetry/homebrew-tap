@@ -33,13 +33,14 @@ class Covise < Formula
   depends_on "python3"
   depends_on "qt"
   depends_on "gdcm" => :optional
+  depends_on "cfitsio" => :recommended
   depends_on "teem" => :recommended
   depends_on "hdf5" => :recommended
   depends_on :x11 => :optional
   depends_on "homebrew/openmotif" if build.with? "x11"
   depends_on "hlrs-vis/tap/openinventor" if build.with? "x11"
   depends_on "assimp" => :recommended
-  #depends_on "cgns" => :optional
+  depends_on "cgns" => :optional
   depends_on "snappy" => :optional
   depends_on "Caskroom/cask/cuda" if build.with? "cuda"
   depends_on "proj" => :recommended
@@ -50,6 +51,7 @@ class Covise < Formula
   depends_on "open-scene-graph"
   depends_on "hidapi"
   depends_on "eigen"
+  depends_on "bullet"
   depends_on "hlrs-vis/tap/osgcal"
   depends_on "hlrs-vis/tap/opencrg"
   depends_on "hlrs-vis/tap/libe57"
