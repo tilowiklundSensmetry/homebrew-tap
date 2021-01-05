@@ -82,9 +82,9 @@ class Covise < Formula
     end
 
     cmake_args = std_cmake_args
-    cmake_args << "-DCOVISE_WARNINGS_IS_ERROR:BOOL=OFF"
-    cmake_args << "-DCOVISE_USE_VISIONARAY=OFF"
-    cmake_args << "-DCOVISE_BUILD_DRIVINGSIM=ON"
+    cmake_args << "-DCOVISE_WARNING_IS_ERROR:BOOL=OFF"
+    cmake_args << "-DCOVISE_USE_VISIONARAY:BOOL=OFF"
+    cmake_args << "-DCOVISE_BUILD_DRIVINGSIM:BOOL=ON"
     cmake_args << "-DCOVISE_USE_FORTRAN:BOOL=ON" if build.with? "fortran"
     cmake_args << "-DCOVISE_USE_FORTRAN:BOOL=OFF" if build.without? "fortran"
     cmake_args << "-DCOVISE_USE_CUDA:BOOL=ON" if build.with? "cuda"
