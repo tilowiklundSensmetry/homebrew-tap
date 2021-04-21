@@ -35,8 +35,8 @@ class Covise < Formula
   depends_on "cfitsio" => :recommended
   depends_on "teem" => :recommended
   depends_on "hdf5" => :recommended
-  depends_on "homebrew/openmotif"
-  depends_on "hlrs-vis/tap/openinventor"
+  depends_on "openmotif"
+  depends_on "tilowiklundSensmetry/tap/openinventor"
   depends_on "assimp" => :recommended
   depends_on "cgns" => :optional
   depends_on "snappy" => :optional
@@ -50,9 +50,9 @@ class Covise < Formula
   depends_on "hidapi"
   depends_on "eigen"
   depends_on "bullet"
-  depends_on "hlrs-vis/tap/osgcal"
-  depends_on "hlrs-vis/tap/opencrg"
-  depends_on "hlrs-vis/tap/libe57"
+  depends_on "tilowiklundSensmetry/tap/osgcal"
+  depends_on "tilowiklundSensmetry/tap/opencrg"
+  depends_on "tilowiklundSensmetry/tap/libe57"
   #depends_on "mpich" => :optional
   depends_on "open-mpi" if build.with? "mpi"
   depends_on "mpich" if build.with? "mpich"
