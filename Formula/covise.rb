@@ -9,7 +9,6 @@ class Covise < Formula
 
   option "with-cuda", "Build with CUDA support"
   option "with-jpeg", "Build against libjpeg instead of libjpeg-turbo"
-  option "with-x11", "Build against X11 and Open Motif"
   option "with-fortran", "Build modules requiring Fortran"
   option "with-mpi", "Build OpenCOVER with MPI support"
   option "without-assimp", "Build without support for reading 3D models with Assimp"
@@ -36,9 +35,8 @@ class Covise < Formula
   depends_on "cfitsio" => :recommended
   depends_on "teem" => :recommended
   depends_on "hdf5" => :recommended
-  #depends_on :x11 => :optional
-  depends_on "homebrew/openmotif" if build.with? "x11"
-  depends_on "hlrs-vis/tap/openinventor" if build.with? "x11"
+  depends_on "homebrew/openmotif"
+  depends_on "hlrs-vis/tap/openinventor"
   depends_on "assimp" => :recommended
   depends_on "cgns" => :optional
   depends_on "snappy" => :optional
@@ -91,8 +89,7 @@ class Covise < Formula
     cmake_args << "-DCOVISE_USE_FORTRAN:BOOL=OFF" if build.without? "fortran"
     cmake_args << "-DCOVISE_USE_CUDA:BOOL=ON" if build.with? "cuda"
     cmake_args << "-DCOVISE_USE_CUDA:BOOL=OFF" if build.without? "cuda"
-    cmake_args << "-DCOVISE_USE_X11:BOOL=ON" if build.with? "x11"
-    cmake_args << "-DCOVISE_USE_X11:BOOL=OFF" if build.without? "x11"
+    cmake_args << "-DCOVISE_USE_X11:BOOL=ON"
     cmake_args << "-DCOVISE_USE_MPI:BOOL=OFF" if build.without? "mpi"
     cmake_args << "-DCOVISE_USE_MPI:BOOL=ON" if build.with? "mpi"
 
