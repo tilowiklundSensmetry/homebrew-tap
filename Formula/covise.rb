@@ -36,7 +36,7 @@ class Covise < Formula
   depends_on "cfitsio" => :recommended
   depends_on "teem" => :recommended
   depends_on "hdf5" => :recommended
-  depends_on :x11 => :optional
+  #depends_on :x11 => :optional
   depends_on "homebrew/openmotif" if build.with? "x11"
   depends_on "hlrs-vis/tap/openinventor" if build.with? "x11"
   depends_on "assimp" => :recommended
